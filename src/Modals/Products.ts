@@ -6,9 +6,11 @@ class Shirt extends Products {
     quantity: number,
     price: number,
     category: string,
-    type: string
+    SKU:string,
+    brand:string,
+    sold:number
   ) {
-    super(name, quantity, price, category, type);
+    super(name, quantity, price, category,SKU,brand,sold);
   }
 }
 

@@ -1,6 +1,6 @@
 import React from "react"
 import Nav from 'Components/Nav/Nav'
-import {makeStyles,Theme,Box} from '@material-ui/core'
+import {makeStyles,Theme} from '@material-ui/core'
 const useStyles=makeStyles((theme:Theme)=>({
     main:{
 

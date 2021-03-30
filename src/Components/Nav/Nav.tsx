@@ -7,7 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import { Drawer } from "@material-ui/core";
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import routes from 'routes'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -56,24 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function Nav() {
   const classes = useStyles();
   const [side, setSide] = useState(false);
-  const link = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "Search",
-      path: "/search",
-    },
-    {
-      name: "Update",
-      path: "/update",
-    },
-    {
-      name: "Delete",
-      path: "/delete",
-    },
-  ];
+  const link=routes.link
 
   return (
     <div className={classes.root}>
@@ -125,7 +109,6 @@ const FullNav = ({ list }: props) => {
       {list.map((e: any, i: number) => (
         <Button
           onClick={(ev) => {
-            ev.stopPropagation();
             history.push(e.path || '/404')
             
             

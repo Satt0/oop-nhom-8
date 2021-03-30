@@ -3,20 +3,26 @@ class Product implements modal {
   private _quantity: number;
   private _price: number;
   private _category: string;
-  private _type: string;
-
+  private _SKU:string;
+  private _brand:string;
+  private _sold:number;
   constructor(
     name: string,
     quantity: number,
     price: number,
     category: string,
-    type: string
+    SKU:string,
+    brand:string,
+    sold:number
+
   ) {
     this._name = name;
     this._quantity = quantity;
     this._price = price;
     this._category = category;
-    this._type = type;
+    this._SKU=SKU
+    this._brand=brand
+    this._sold=sold
   }
   public get name(): string {
     return this._name;
@@ -24,15 +30,13 @@ class Product implements modal {
   public get quantity(): number {
     return this._quantity;
   }
-  public get catergory():string{
+  public get category():string{
     return this._category;
    }
    public get price():number{
     return this._price;
    }
-   public get type():String{
-    return this._type;
-   }
+   
    public isStock():boolean{
      if(this._quantity>0)
      {
@@ -42,7 +46,9 @@ class Product implements modal {
    }
 }
 interface modal {
+
   isStock:Function;
+  
 }
 
 export default Product;
