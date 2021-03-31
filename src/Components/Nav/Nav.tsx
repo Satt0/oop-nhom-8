@@ -108,6 +108,8 @@ const FullNav = ({ list }: props) => {
     <React.Fragment>
       {list.map((e: any, i: number) => (
         <Button
+        className="appear-animated"
+        style={{animationDelay:`${i*100}ms`}}
           onClick={(ev) => {
             history.push(e.path || '/404')
             

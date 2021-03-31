@@ -5,3 +5,18 @@
     margin:0;
     outline: none;
 }
+.appear-animated{
+    opacity: 0;
+    animation: appear .4s cubic-bezier(0,1.82,.54,.41) forwards;
+}
+@keyframes appear{
+    from{
+        transform: scale(.9);
+        opacity:.5;
+
+    }
+    to {
+        transform: scale(1);
+        opacity:1;
+    }
+}

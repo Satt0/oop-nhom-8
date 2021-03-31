@@ -16,7 +16,7 @@ const App:React.FC=()=> {
        <Switch>
 
       {
-        routes.path.map(({path,Component}:any,i:number)=><Route path={path}><Component shop={state} handleShop={setState}/></Route>)
+        routes.path.map(({path,Component}:any,i:number)=><Route key={'routes'+i} path={path}><Component shop={state} handleShop={setState}/></Route>)
       }
        </Switch>
       
