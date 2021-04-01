@@ -18,13 +18,15 @@ interface props {
 }
 const Item = ({ data, onDelete }: props) => {
   const style = useStyles();
-  const { name, quantity, sold, SKU } = data;
+  const { name, quantity, sold, SKU,brand } = data;
   const history=useHistory()
   return (
     <div className={`${style.main} appear-animated`} style={{ width: "100%" }}>
       <div>
         <Typography variant="h6" component="h6">
           <strong>SKU: {SKU}</strong>-{name}
+          <br/>
+          <strong>Brand: {brand}</strong>
         </Typography>
 
         <Typography variant="h6" component="h6">

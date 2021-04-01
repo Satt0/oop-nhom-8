@@ -3,6 +3,11 @@ import ListItem from "Components/ListItem/ListItem";
 import { Box } from "@material-ui/core";
 import Filter from "Components/Filter/Filter";
 import Products from "Modals/Modals";
+
+const compare:Function=(str1:string,str2:string)=>{
+  const length=Math.min(str1.length,str2.length)
+  return str1.substring(0,length).toLowerCase()===str2.substring(0,length).toLowerCase()
+}
 interface props {
   shop: Array<any>;
   handleShop: Function;
@@ -22,11 +27,26 @@ export default function UpdateBrowse({ shop, handleShop }: props) {
     [shop]
   );
   const handleSearch=useCallback((name:string,SKU:string,brand:string)=>{
-    console.log(name,SKU,brand);
+    const newState:Array<Products>=[...shop].filter((e:any)=>{
+      let result=true;
+      if(name!=='')
+      {
+        result=compare(e.name,name)
+      }
+      if(SKU!==''){
+        result=result && compare(e.SKU,SKU)
+      }
+      if(brand!==''){
+        result=result && compare(e.brand,brand)
+      }
+      return result
+    })
+    setSearch(newState)
+    
     
   },[shop,handleShop])
   useEffect(() => {
-    if (shop.length) {
+    if (shop!==null) {
       setSearch(shop);
     }
   }, [shop]);
