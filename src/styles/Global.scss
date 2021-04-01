@@ -7,8 +7,15 @@
 }
 .appear-animated{
     opacity: 0;
-    animation: appear .4s cubic-bezier(0,1.82,.54,.41) forwards;
+    animation: appear .4s ease forwards;
+    @for $var from 1 to 20 {
+        &:nth-child(#{$var}){
+            animation-delay: $var * 20ms;
+        }
+    }
 }
+
+
 @keyframes appear{
     from{
         transform: scale(.9);

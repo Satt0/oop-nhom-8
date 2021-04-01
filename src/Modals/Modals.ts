@@ -1,3 +1,14 @@
+
+interface construct{
+  name: string,
+    quantity: number,
+    price: number,
+    category: string,
+    SKU:string,
+    brand:string,
+    sold:number
+
+}
 class Product implements modal {
   private _name: string;
   private _quantity: number;
@@ -7,14 +18,15 @@ class Product implements modal {
   private _brand:string;
   private _sold:number;
   constructor(
-    name: string,
-    quantity: number,
-    price: number,
-    category: string,
-    SKU:string,
-    brand:string,
-    sold:number
-
+    {
+      name,
+      quantity,
+      price,
+      category,
+      SKU,
+      brand,
+      sold
+    }:construct
   ) {
     this._name = name;
     this._quantity = quantity;
@@ -36,7 +48,15 @@ class Product implements modal {
    public get price():number{
     return this._price;
    }
-   
+   public get SKU():string{
+    return this._SKU;
+   }
+   public get brand():string{
+    return this._brand;
+   }
+   public get sold():number{
+    return this._sold;
+   }
    public isStock():boolean{
      if(this._quantity>0)
      {

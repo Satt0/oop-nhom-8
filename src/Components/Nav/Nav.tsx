@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     sideBar: {
       display: "flex",
       flexDirection: "column",
-      padding: theme.spacing(10),
+      padding: '4rem 4vw',
       "& > button": {
         height: 70,
         marginBottom: 10,
@@ -109,7 +109,7 @@ const FullNav = ({ list }: props) => {
       {list.map((e: any, i: number) => (
         <Button
         className="appear-animated"
-        style={{animationDelay:`${i*100}ms`}}
+     
           onClick={(ev) => {
             history.push(e.path || '/404')
             

@@ -9,6 +9,10 @@ import {
 } from "@material-ui/core";
 import styles from "styles/Style.module.css";
 import Products from "Modals/Modals";
+import Shirts from 'Modals/Products';
+import Pants from 'Modals/Pant'
+import HandBag from 'Modals/HandBag'
+import preload from "Modals/preload";
 
 interface props {
   name: string;
@@ -29,7 +33,14 @@ interface state {
   material: string;
   size: string;
 }
-const Input: React.FC = ({ handleShop }: any) => {
+interface passedProps{
+  shop:any,
+  handleShop:Function,
+  loadProps:boolean
+}
+const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
+ 
+  
   const [global, setGlobal] = useState(() => {
     const arr: state = {
       name: "",
@@ -52,17 +63,21 @@ const Input: React.FC = ({ handleShop }: any) => {
     (target: string) => {
       return (e: any) => {
         const value: any = e.target.value;
-        console.log(value,target);
-        
+        console.log(value, target);
+
         if (target === "name") {
           setGlobal((state: state) => ({ ...state, name: value }));
         } else if (target === "quantity") {
-          setGlobal((state: state) => ({
-            ...state,
-            quantity: parseInt(value),
-          }));
+          if (parseInt(value) > 0) {
+            setGlobal((state: state) => ({
+              ...state,
+              quantity: parseInt(value),
+            }));
+          }
         } else if (target === "price") {
-          setGlobal((state: state) => ({ ...state, price: parseInt(value) }));
+          if (parseInt(value) > 0) {
+            setGlobal((state: state) => ({ ...state, price: parseInt(value) }));
+          }
         } else if (target === "category") {
           setGlobal((state: state) => ({ ...state, category: value }));
         } else if (target === "SKU") {
@@ -77,35 +92,42 @@ const Input: React.FC = ({ handleShop }: any) => {
           setGlobal((state: state) => ({ ...state, leg: value }));
         } else if (target === "hip") {
           setGlobal((state: state) => ({ ...state, hip: value }));
-        } else if (target === 'hasHandle'){
+        } else if (target === "hasHandle") {
           setGlobal((state: state) => ({ ...state, hasHandle: value }));
-
-        } else if(target==='material'){
+        } else if (target === "material") {
           setGlobal((state: state) => ({ ...state, material: value }));
-
         }
       };
     },
     [global]
   );
-  // const handleSubmit = useCallback(
-  //   (e: any) => {
-  //     e.preventDefault();
-
-  //     // const product: Products = new Products(
-  //     //   name,
-  //     //   quantity,
-  //     //   price,
-  //     //   category,
-  //     //   SKU,
-  //     //   brand,
-  //     //   0
-  //     // );
-
-  //     // handleShop((state: Array<Products>) => [...state, product]);
-  //   }
-    
-  // );
+  const handleSubmit = useCallback(
+    (e) => {
+     
+      e.preventDefault();
+       let item:Products;
+       const sold=Math.ceil(Math.random()*global.quantity)
+       if(global.category==='shirt')
+       {
+         item=new Shirts({...global,sold:sold});
+       }
+       else if(global.category==='pant'){
+       item= new Pants({...global,sold:sold});
+       }
+       else if(global.category==='handBag'){
+        item= new HandBag({...global,sold:sold});
+        }
+     if(preload){
+          handleShop((state:Array<Products>)=>{
+              const newState=[...state.filter((e:Products)=>e.SKU!==item.SKU),item]
+              return newState
+          })
+     }else{
+      handleShop((state:Array<Products>)=>[...state,item])
+     }
+    },
+    [global]
+  );
 
   const subInput = useMemo(() => {
     const result = [
@@ -188,17 +210,25 @@ const Input: React.FC = ({ handleShop }: any) => {
     if (subInput.length) {
       const found = subInput.find((e) => e.category === global.category);
       if (found) {
-        
         const array: Array<props> = found.props;
         setCurrent(array);
       }
     }
   }, [subInput, global.category]);
+  useEffect(()=>{
+    if(shop.name){
+      
+      
+     const state=(Object.entries(shop).map(e=>([e[0].substring(1),e[1]])));
+     let newState={...global}
+      state.forEach((e:Array<any>)=>{
+        newState={...newState,[e[0]]:e[1]}
+      })
+      setGlobal((state:any)=>({...state,...newState}))      
+    }
+  },[shop])
   return (
-    <form 
-    // onSubmit={handleSubmit} 
-    
-    className={styles.main}>
+    <form onSubmit={handleSubmit} className={styles.main}>
       <FormControl style={{ width: "100%" }} className="appear-animated">
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
@@ -258,12 +288,15 @@ const Input: React.FC = ({ handleShop }: any) => {
         onChange={handleChange("brand")}
       />
 
-      {current ? <Custom  list={current} handleChange={handleChange} /> : <></>}
+      {current ? <Custom list={current} handleChange={handleChange} /> : <></>}
 
-      <Button 
-      className="appear-animated"
-      color="primary" type="submit" variant="contained">
-        Add item
+      <Button
+        className="appear-animated"
+        color="primary"
+        type="submit"
+        variant="contained"
+      >
+        {preload?"Update Item":'Add item'}
       </Button>
     </form>
   );
@@ -272,8 +305,12 @@ const Input: React.FC = ({ handleShop }: any) => {
 const Custom = ({ list, handleChange }: any) => {
   return (
     <>
-      {list.map((e: any,i:number) => (
-        <FormControl className="appear-animated" key={'subinput'+Math.floor(Math.random()*9999999999)} style={{ width: "100%" }}>
+      {list.map((e: any, i: number) => (
+        <FormControl
+          className="appear-animated"
+          key={"subinput" + i}
+          style={{ width: "100%" }}
+        >
           <InputLabel id="demo-simple-select-label">{e.name}</InputLabel>
           <Select
             required
@@ -282,8 +319,10 @@ const Custom = ({ list, handleChange }: any) => {
             value={e.state}
             onChange={handleChange(e.name)}
           >
-            {e.attribute.map((item: any,id:number) => (
-              <MenuItem key={"subinput-item "+i+id} value={item.props}>{item.name}</MenuItem>
+            {e.attribute.map((item: any, id: number) => (
+              <MenuItem key={"subinput-item " + i + id} value={item.props}>
+                {item.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
