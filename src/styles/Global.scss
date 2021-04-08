@@ -8,6 +8,10 @@
 .appear-animated{
     opacity: 0;
     animation: appear .4s ease forwards;
+    transition: all .3s;
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.151);
+    }
     @for $var from 1 to 20 {
         &:nth-child(#{$var}){
             animation-delay: $var * 20ms;

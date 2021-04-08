@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   group: {
       width:'100%',
-      
+      overflow:'visible',
       textAlign:'center',
       
   },

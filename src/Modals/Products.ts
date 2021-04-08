@@ -26,6 +26,10 @@ class Shirt extends Products {
   public get size():string{
     return this._size
   }
+  public showCase():void{
+    console.log(this.name,'from shirt');
+    
+  }
 }
 
 export default Shirt;

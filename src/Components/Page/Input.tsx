@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import  { useState, useCallback, useMemo, useEffect } from "react";
 import {
   TextField,
   FormControl,
@@ -114,9 +114,10 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
        else if(global.category==='pant'){
        item= new Pants({...global,sold:sold});
        }
-       else if(global.category==='handBag'){
+       else {
         item= new HandBag({...global,sold:sold});
         }
+        item.showCase()
      if(preload){
           handleShop((state:Array<Products>)=>{
               const newState=[...state.filter((e:Products)=>e.SKU!==item.SKU),item]
@@ -296,7 +297,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         type="submit"
         variant="contained"
       >
-        {preload?"Update Item":'Add item'}
+        {loadProps?"Update Item":'Add item'}
       </Button>
     </form>
   );

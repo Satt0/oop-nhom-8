@@ -9,7 +9,7 @@ interface construct{
     sold:number
 
 }
-class Product implements modal {
+class Products implements modal {
   private _name: string;
   private _quantity: number;
   private _price: number;
@@ -17,6 +17,7 @@ class Product implements modal {
   private _SKU:string;
   private _brand:string;
   private _sold:number;
+  // private _color:string;
   constructor(
     {
       name,
@@ -64,11 +65,16 @@ class Product implements modal {
      }
      return false
    }
+   public showCase():void{
+     console.log(this._name,' from parent');
+     
+   }
 }
 interface modal {
 
   isStock:Function;
+  showCase:Function
   
 }
 
-export default Product;
+export default Products;

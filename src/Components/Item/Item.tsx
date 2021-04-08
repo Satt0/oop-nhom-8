@@ -4,10 +4,11 @@ import { Typography } from "@material-ui/core";
 import {useHistory} from 'react-router-dom'
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
-    border: "2px solid black",
+    border: "1px solid gray",
     padding: "2rem 2vw",
     marginTop: theme.spacing(1),
-    borderRadius: 5,
+    borderRadius: 3,
+    boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
     display: "flex",
     justifyContent: "space-between",
   },
@@ -24,7 +25,7 @@ const Item = ({ data, onDelete }: props) => {
     <div className={`${style.main} appear-animated`} style={{ width: "100%" }}>
       <div>
         <Typography variant="h6" component="h6">
-          <strong>SKU: {SKU}</strong>-{name}
+          <strong>SKU: {SKU}</strong>- Name: {name}
           <br/>
           <strong>Brand: {brand}</strong>
         </Typography>

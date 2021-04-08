@@ -1,13 +1,21 @@
 import Layout from 'Components/Layout/Layout'
-import {useState,useEffect,useCallback} from 'react'
+import {useState,useEffect} from 'react'
 import Products from 'Modals/Products'
 import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
 import preload from 'Modals/preload'
+
+
 const App:React.FC=()=> {
 
   const [state,setState]=useState(()=>{
-    const data:Array<Products>=[...preload]
+    const data:Array<Products>=[]
+   
+    preload.forEach((e:any)=>{
+      data.push(e)
+    })
+
+   
     return data
   })
   useEffect(()=>{

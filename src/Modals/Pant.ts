@@ -20,6 +20,12 @@ class Pant extends Products {
     this._leg=leg;
     this._hip=hip;
   }
+  public get leg():string{
+    return this._leg
+  }
+  public get hip():string{
+    return this._hip
+  }
 }
 
 export default Pant;
