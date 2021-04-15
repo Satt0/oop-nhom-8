@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
-import Products from 'Modals/Modals'
+// import Products from 'Modals/Modals'
 import Input from 'Components/Page/Input'
 interface props{
     id:string,
@@ -28,7 +28,7 @@ export default function UpdateItem({id,shop,handleShop}:props) {
                 history.push('/')
         }   
 
-   },[shop,id])
+   },[shop,id,history])
     
     return (
         <div>

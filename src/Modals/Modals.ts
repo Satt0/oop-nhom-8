@@ -6,7 +6,8 @@ interface construct{
     category: string,
     SKU:string,
     brand:string,
-    sold:number
+    sold:number,
+    color:string
 
 }
 class Products implements modal {
@@ -17,7 +18,7 @@ class Products implements modal {
   private _SKU:string;
   private _brand:string;
   private _sold:number;
-  // private _color:string;
+  private _color:string;
   constructor(
     {
       name,
@@ -26,7 +27,8 @@ class Products implements modal {
       category,
       SKU,
       brand,
-      sold
+      sold,
+      color
     }:construct
   ) {
     this._name = name;
@@ -36,12 +38,16 @@ class Products implements modal {
     this._SKU=SKU
     this._brand=brand
     this._sold=sold
+    this._color=color
   }
   public get name(): string {
     return this._name;
   }
   public get quantity(): number {
     return this._quantity;
+  }
+  public get color():string{
+    return this._color;
   }
   public get category():string{
     return this._category;

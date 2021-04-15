@@ -10,13 +10,14 @@ interface input {
   sold: number;
   sleeve:string;
   size:string
+  color:string
 }
 class Shirt extends Products {
   private _sleeve:string;
   private _size:string;
   constructor(data: input) {
-    const { name, quantity, price, category, SKU, brand, sold ,sleeve,size}=data
-    super({ name, quantity, price, category, SKU, brand, sold });
+    const { name, quantity, price, category, SKU, brand, sold ,sleeve,size,color}=data
+    super({ name, quantity, price, category, SKU, brand, sold ,color});
     this._sleeve=sleeve;
     this._size=size;
   }

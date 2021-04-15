@@ -19,7 +19,7 @@ interface props {
 }
 const Item = ({ data, onDelete }: props) => {
   const style = useStyles();
-  const { name, quantity, sold, SKU,brand } = data;
+  const { name, quantity, sold, SKU,brand,color,price } = data;
   const history=useHistory()
   return (
     <div className={`${style.main} appear-animated`} style={{ width: "100%" }}>
@@ -29,12 +29,15 @@ const Item = ({ data, onDelete }: props) => {
           <br/>
           <strong>Brand: {brand}</strong>
         </Typography>
-
+        <Typography variant="h6" component="h6">
+          <strong>color: {color}</strong>- price: {price}
+         
+        </Typography>
         <Typography variant="h6" component="h6">
           sold: {sold} , {quantity} left
         </Typography>
       </div>
-      <div style={{ width: 90, display: "flex", flexDirection: "column" }}>
+      <div style={{ width: 90, display: "flex", flexDirection: "column",justifyContent:"center" }}>
         <Button 
         onClick={()=>{
             history.push(`/update/${SKU}`)

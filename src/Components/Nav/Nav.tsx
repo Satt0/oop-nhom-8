@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import { Drawer } from "@material-ui/core";
-import {useHistory} from 'react-router-dom';
+import {useHistory,useLocation} from 'react-router-dom';
 import routes from 'routes'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,7 +61,7 @@ export default function Nav() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar color="transparent" position="static">
         <Toolbar>
           <div className={classes.Toggle}>
             <IconButton
@@ -104,6 +104,8 @@ interface props {
 
 const FullNav = ({ list }: props) => {
   const history=useHistory()
+  const location=useLocation()
+ 
   return (
     <React.Fragment>
       {list.map((e: any, i: number) => (
@@ -115,7 +117,7 @@ const FullNav = ({ list }: props) => {
             
             
           }}
-          color="secondary"
+          color={location.pathname===e.path?'secondary':'primary'}
           variant="contained"
           key={"button-link" + i}
         >

@@ -29,7 +29,7 @@ const Home: React.FC = ({ shop,handleShop }: any) => {
   const style = useStyles();
   const handleDelete=useCallback((SKU)=>{
     handleShop(((state:Array<any>) =>[...state].filter((e:any)=>e.SKU!==SKU)))
-  },[shop])
+  },[handleShop])
   return (
     <div className={style.main}>
       <div className={style.group}>

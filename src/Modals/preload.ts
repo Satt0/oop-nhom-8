@@ -1,6 +1,6 @@
 import Shirt from "./Products";
 import Pant from "./Pant";
-import HandBag from "./HandBag";
+// import HandBag from "./HandBag";
 import Products from './Modals'
 
 const shirt1: Shirt = new Shirt({
@@ -12,6 +12,7 @@ const shirt1: Shirt = new Shirt({
   brand: "Gucci",
   sold: 134,
   sleeve: "short",
+  color:'red',
   size: "over-size",
 });
 const shirt2: Shirt = new Shirt({
@@ -20,6 +21,7 @@ const shirt2: Shirt = new Shirt({
   price: 90000,
   category: "shirt",
   SKU: "SH1143",
+  color:'orange',
   brand: "Channel",
   sold: 193,
   sleeve: "long",
@@ -33,6 +35,7 @@ const shirt3: Shirt = new Shirt({
   SKU: "SH117",
   brand: "Gucci",
   sold: 126,
+  color:'blue',
   sleeve: "short",
   size: "over-size",
 });
@@ -45,6 +48,7 @@ const shirt4: Shirt = new Shirt({
   brand: "Gucci",
   sold: 144,
   sleeve: "short",
+  color:'yellow',
   size: "over-size",
 });
 const pant1: Pant = new Pant({
@@ -56,6 +60,7 @@ const pant1: Pant = new Pant({
   brand: "Gucci",
   sold: 184,
   leg: "normal",
+  color:'pink',
   hip: "normal",
 });
 const arr:Array<Products>=[

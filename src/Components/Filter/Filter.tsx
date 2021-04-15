@@ -1,12 +1,7 @@
 import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
+  TextField
 } from "@material-ui/core";
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {makeStyles,Theme} from '@material-ui/core'
 
 const useStyles=makeStyles((theme:Theme)=>({
@@ -27,7 +22,7 @@ const Filter = ({ handleSearch }: props) => {
   const [state, setState] = useState(() => {
     return {
       name: "",
-
+      color:"",
       SKU: "",
       brand: "",
     };
@@ -40,11 +35,11 @@ const Filter = ({ handleSearch }: props) => {
         setState((state: any) => ({ ...state, [target]: value }));
       };
     },
-    [state]
+    []
   );
   useEffect(() => {
-    handleSearch(state.name, state.SKU, state.brand);
-  }, [state]);
+    handleSearch(state.name, state.SKU, state.brand,state.color);
+  }, [state,handleSearch]);
   return (
     <form className={styles.main}>
       <TextField
@@ -84,12 +79,10 @@ const Filter = ({ handleSearch }: props) => {
         label="Color"
         placeholder="enter product Color"
         className="appear-animated"
-        // value={state.brand}
-        // onChange={onChange("brand")}
+        value={state.color}
+        onChange={onChange("color")}
       />
-      {/* <Button color="primary" variant="outlined">
-        Search
-      </Button> */}
+      
     </form>
   );
 };

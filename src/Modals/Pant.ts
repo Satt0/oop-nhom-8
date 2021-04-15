@@ -10,13 +10,14 @@ interface input {
   sold: number;
   leg:string;
   hip:string
+  color:string
 }
 class Pant extends Products {
   private _leg:string;
   private _hip:string
   constructor(data: input) {
-    const { name, quantity, price, category, SKU, brand, sold ,leg,hip}=data
-    super({ name, quantity, price, category, SKU, brand, sold });
+    const { name, quantity, price, category, SKU, brand, sold ,leg,hip,color}=data
+    super({ name, quantity, price, category, SKU, brand, sold ,color});
     this._leg=leg;
     this._hip=hip;
   }

@@ -24,9 +24,9 @@ export default function UpdateBrowse({ shop, handleShop }: props) {
         [...state].filter((e: any) => e.SKU !== SKU)
       );
     },
-    [shop]
+    [handleShop]
   );
-  const handleSearch=useCallback((name:string,SKU:string,brand:string)=>{
+  const handleSearch=useCallback((name:string,SKU:string,brand:string,color:string)=>{
     const newState:Array<Products>=[...shop].filter((e:any)=>{
       let result=true;
       if(name!=='')
@@ -39,12 +39,15 @@ export default function UpdateBrowse({ shop, handleShop }: props) {
       if(brand!==''){
         result=result && compare(e.brand,brand)
       }
+      if(color!==''){
+        result=result && compare(e.color,color)
+      }
       return result
     })
     setSearch(newState)
     
     
-  },[shop,handleShop])
+  },[shop])
   useEffect(() => {
     if (shop!==null) {
       setSearch(shop);

@@ -6,18 +6,12 @@ const link = [
       name: "Home",
       path: "/",
     },
-    // {
-    //   name: "Search",
-    //   path: "/search",
-    // },
+    
     {
       name: "search & Update",
       path: "/update",
     },
-    // {
-    //   name: "Delete",
-    //   path: "/delete",
-    // },
+    
     {
       name:'Input',
       path:'/input'
@@ -38,6 +32,7 @@ const path =[
       Component:Home
   }
 ]
-export default {
+const route={
   path,link
 }
+export default route

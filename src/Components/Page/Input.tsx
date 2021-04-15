@@ -32,6 +32,7 @@ interface state {
   hasHandle: string;
   material: string;
   size: string;
+  color:string
 }
 interface passedProps{
   shop:any,
@@ -47,6 +48,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
       quantity: 0,
       category: "shirt",
       price: 0,
+      color:'red',
       SKU: "",
       brand: "",
       sleeve: "long",
@@ -99,7 +101,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         }
       };
     },
-    [global]
+    []
   );
   const handleSubmit = useCallback(
     (e) => {
@@ -127,7 +129,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
       handleShop((state:Array<Products>)=>[...state,item])
      }
     },
-    [global]
+    [global,handleShop]
   );
 
   const subInput = useMemo(() => {
@@ -227,7 +229,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
       })
       setGlobal((state:any)=>({...state,...newState}))      
     }
-  },[shop])
+  },[shop,global])
   return (
     <form onSubmit={handleSubmit} className={styles.main}>
       <FormControl style={{ width: "100%" }} className="appear-animated">
@@ -277,6 +279,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         id="product-type"
         label="SKU"
         value={global.SKU}
+        disabled={loadProps}
         className="appear-animated"
         onChange={handleChange("SKU")}
       />
