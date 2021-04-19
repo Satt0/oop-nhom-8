@@ -4,13 +4,8 @@ import Products from 'Modals/Products'
 import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
 import preload from 'Modals/preload'
-<<<<<<< HEAD
 //hello from tan
 
-=======
-
-const temp="hello"
->>>>>>> origin/master
 const App:React.FC=()=> {
 
   const [state,setState]=useState(()=>{
