@@ -4,7 +4,7 @@ import Products from 'Modals/Products'
 import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
 import preload from 'Modals/preload'
-//hello from tan
+
 
 const App:React.FC=()=> {
 
