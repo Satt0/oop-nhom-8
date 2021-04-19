@@ -5,7 +5,7 @@ import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
 import preload from 'Modals/preload'
 
-
+const temp="hello"
 const App:React.FC=()=> {
 
   const [state,setState]=useState(()=>{
