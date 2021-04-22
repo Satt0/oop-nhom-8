@@ -21,12 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     groupButton: {
-      margin: "0 auto",
+      marginLeft:'15%',
       "& > button": {
         marginRight: 6,
+        padding:10
       },
       [theme.breakpoints.down("sm")]: {
         display: "none",
+        margin:0
       },
     },
     Drawer: {
@@ -40,6 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       padding: '4rem 4vw',
+      
       "& > button": {
         height: 70,
         marginBottom: 10,
@@ -76,7 +79,7 @@ export default function Nav() {
               <MenuIcon />
             </IconButton>
           </div>
-          <Typography>Nhom 8 OOP</Typography>
+          <Typography>Nhom 8 OOP-Quản lý cửa hàng thời trang</Typography>
           <div className={classes.groupButton}>
             <FullNav key={"nav-bar-button"} list={link} />
           </div>

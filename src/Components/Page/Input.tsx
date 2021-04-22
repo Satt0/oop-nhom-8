@@ -65,7 +65,6 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
     (target: string) => {
       return (e: any) => {
         const value: any = e.target.value;
-        console.log(value, target);
 
         if (target === "name") {
           setGlobal((state: state) => ({ ...state, name: value }));
@@ -222,14 +221,17 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
     if(shop.name){
       
       
-     const state=(Object.entries(shop).map(e=>([e[0].substring(1),e[1]])));
-     let newState={...global}
-      state.forEach((e:Array<any>)=>{
+     const oldState=(Object.entries(shop).map(e=>([e[0].substring(1),e[1]])));
+     
+      setGlobal((state:any)=>{
+        let newState={...state}
+        oldState.forEach((e:Array<any>)=>{
         newState={...newState,[e[0]]:e[1]}
       })
-      setGlobal((state:any)=>({...state,...newState}))      
+      return newState
+      })     
     }
-  },[shop,global])
+  },[shop])
   return (
     <form onSubmit={handleSubmit} className={styles.main}>
       <FormControl style={{ width: "100%" }} className="appear-animated">

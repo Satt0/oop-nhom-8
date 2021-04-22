@@ -1,5 +1,5 @@
 import Layout from 'Components/Layout/Layout'
-import {useState,useEffect} from 'react'
+import {useState} from 'react'
 import Products from 'Modals/Products'
 import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
@@ -18,11 +18,7 @@ const App:React.FC=()=> {
    
     return data
   })
-  useEffect(()=>{
-    console.log(state);
-    
-  },[state])
- 
+  
   return (
     <>
      <Layout>
