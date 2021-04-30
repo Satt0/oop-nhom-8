@@ -8,7 +8,7 @@
 1. Thêm, Bớt, Sửa, Xóa một sản phẩm
 2. Tìm kiếmsản phẩm theo tên sản phẩm, mã, màu sắc, nhãn hiệu. 
 3. Tìm kiếm tất cả các sản phẩm được bán trong tháng hiện tại cùng thông tin về kích thước sản phẩm.
-4. Thống kê danh sách 10 sản phẩm bán chạy nhất trong khoảngthời gian nhập vào.
+4. Thống kê danh sách 10 sản phẩm bán chạy nhất trong khoảng thời gian nhập vào.
 ##  Giải pháp hướng đối tượng
 ### 1. Ngôn ngữ lập trình: _Typescript_ [docs](https://www.typescriptlang.org/docs/)
 ###  2. Các thư viện sử dụng: _React.js_ [docs](https://reactjs.org/)
