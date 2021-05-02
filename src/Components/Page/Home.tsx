@@ -26,10 +26,15 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 const Home: React.FC = ({ shop,handleShop }: any) => {
+  
   const style = useStyles();
+
   const handleDelete=useCallback((SKU)=>{
     handleShop(((state:Array<any>) =>[...state].filter((e:any)=>e.SKU!==SKU)))
   },[handleShop])
+  
+  
+  
   return (
     <div className={style.main}>
       <div className={style.group}>
