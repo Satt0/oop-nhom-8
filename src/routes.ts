@@ -3,17 +3,17 @@ import Input from 'Components/Page/Input'
 import Update from 'Components/Page/Update'
 const link = [
     {
-      name: "Home",
+      name: "Trang chủ",
       path: "/",
     },
     
     {
-      name: "search & Update",
+      name: "Tìm kiếm & cập nhật",
       path: "/update",
     },
     
     {
-      name:'Input',
+      name:'Nhập liệu',
       path:'/input'
     }
   ];

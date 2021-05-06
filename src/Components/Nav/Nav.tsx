@@ -76,16 +76,18 @@ export default function Nav() {
               color="inherit"
               aria-label="menu"
             >
+              
               <MenuIcon />
             </IconButton>
           </div>
           <Typography>Nhom 8 OOP-Quản lý cửa hàng thời trang</Typography>
           <div className={classes.groupButton}>
+           
             <FullNav key={"nav-bar-button"} list={link} />
           </div>
           <div className={classes.Drawer}>
             <Drawer
-              anchor="top"
+              anchor="left"
               open={side}
               onClick={() => {
                 setSide(false);
@@ -121,7 +123,7 @@ const FullNav = ({ list }: props) => {
             
           }}
           color={location.pathname===e.path?'secondary':'primary'}
-          variant="contained"
+          variant="outlined"
           key={"button-link" + i}
         >
           {e?.name}
