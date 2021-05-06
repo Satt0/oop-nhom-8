@@ -34,6 +34,5 @@ const App:React.FC=()=> {
     </>
   );
 }
-// JSX > javascript >> .js , typescript >> .tsx
+
 export default App;
-//hello world
