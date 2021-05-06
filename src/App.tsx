@@ -8,6 +8,7 @@ import preload from 'Modals/preload'
 
 const App:React.FC=()=> {
 
+
   const [state,setState]=useState(()=>{
     const data:Array<Products>=[]
    
@@ -33,5 +34,6 @@ const App:React.FC=()=> {
     </>
   );
 }
-
+// JSX > javascript >> .js , typescript >> .tsx
 export default App;
+//hello world
