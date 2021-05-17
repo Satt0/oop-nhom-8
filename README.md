@@ -12,3 +12,4 @@
 ##  Giải pháp hướng đối tượng
 ### 1. Ngôn ngữ lập trình: _Typescript_ [docs](https://www.typescriptlang.org/docs/)
 ###  2. Các thư viện sử dụng: _React.js_ [docs](https://reactjs.org/)
+![alt text](./file-structure.png "file structure")
