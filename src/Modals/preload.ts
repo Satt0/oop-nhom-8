@@ -1,4 +1,4 @@
-import Shirt from "./Products";
+import Shirt from "./Shirt";
 import Pant from "./Pant";
 // import HandBag from "./HandBag";
 import Products from './Modals'

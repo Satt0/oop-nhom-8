@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import styles from "styles/Style.module.css";
 import Products from "Modals/Modals";
-import Shirts from 'Modals/Products';
+import Shirts from 'Modals/Shirt';
 import Pants from 'Modals/Pant'
 import HandBag from 'Modals/HandBag'
 import preload from "Modals/preload";

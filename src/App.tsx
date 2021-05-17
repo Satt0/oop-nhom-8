@@ -1,6 +1,6 @@
 import Layout from 'Components/Layout/Layout'
 import {useState} from 'react'
-import Products from 'Modals/Products'
+import Products from 'Modals/Modals'
 import routes from 'routes'
 import {Switch,Route} from 'react-router-dom'
 import preload from 'Modals/preload'
