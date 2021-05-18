@@ -8,7 +8,7 @@ import preload from 'Modals/preload'
 
 const App:React.FC=()=> {
 
-
+  // load preloaded products
   const [state,setState]=useState(()=>{
     const data:Array<Products>=[]
    

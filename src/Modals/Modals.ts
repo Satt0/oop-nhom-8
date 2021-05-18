@@ -1,5 +1,6 @@
 
-interface construct{
+
+interface constructor{
   name: string,
     quantity: number,
     price: number,
@@ -10,7 +11,13 @@ interface construct{
     color:string
 
 }
-class Products implements modal {
+interface item {
+   
+  isStock:Function;
+  
+  
+}
+class Products implements item {
   private _name: string;
   private _quantity: number;
   private _price: number;
@@ -29,11 +36,11 @@ class Products implements modal {
       brand,
       sold,
       color
-    }:construct
+    }:constructor
   ) {
     this._name = name;
-    this._quantity = quantity;
-    this._price = price;
+    this._quantity = Math.max(quantity,0);
+    this._price = Math.max(price,0);
     this._category = category;
     this._SKU=SKU
     this._brand=brand
@@ -71,16 +78,8 @@ class Products implements modal {
      }
      return false
    }
-   public showCase():void{
-     console.log(this._name,' from parent');
-     
-   }
-}
-interface modal {
-
-  isStock:Function;
-  showCase:Function
   
 }
+
 
 export default Products;

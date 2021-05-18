@@ -122,8 +122,8 @@ const FullNav = ({ list }: props) => {
             
             
           }}
-          color={location.pathname===e.path?'secondary':'primary'}
-          variant="outlined"
+          color="primary"
+          variant={location.pathname===e.path?'contained':'outlined'}
           key={"button-link" + i}
         >
           {e?.name}

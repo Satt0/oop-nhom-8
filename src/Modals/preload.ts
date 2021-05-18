@@ -5,7 +5,7 @@ import Products from './Modals'
 
 const shirt1: Shirt = new Shirt({
   name: "T-shirt",
-  quantity: 60,
+  quantity: 0,
   price: 50000,
   category: "shirt",
   SKU: "SH111",

@@ -8,6 +8,7 @@ const useStyles=makeStyles((theme:Theme)=>({
   main:{
     display:'grid',
     gridTemplateColumns:'1fr 1fr 1fr 1fr',
+    gridGap:5
 
   }
 }))
