@@ -6,17 +6,15 @@ import {
   Select,
   MenuItem,
   Button,
-  IconButton
+  
 } from "@material-ui/core";
-import Alert from '@material-ui/lab/Alert';
-import CloseIcon from '@material-ui/icons/Close';
+
 import styles from "styles/Style.module.css";
 import Products from "Modals/Modals";
 import Shirts from 'Modals/Shirt';
 import Pants from 'Modals/Pant'
 import HandBag from 'Modals/HandBag'
 import preload from "Modals/preload";
-import Collapse from '@material-ui/core/Collapse';
 interface props {
   name: string;
   state: any;
@@ -44,7 +42,7 @@ interface passedProps{
 }
 const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
 
-  const [alert,setAlert]=useState({status:false,message:"Success!"})
+  
   
   const [global, setGlobal] = useState(() => {
     const arr: state = {
@@ -134,12 +132,13 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
      }else{
       handleShop((state:Array<Products>)=>[...state,item])
      }
-     setAlert({message:'Success!',status:true})
+     alert("successfully!")
+     
     }
     else
     {
-
-      setAlert({message:'Input error!',status:true})
+      alert('something went wrong, please retry!')
+      
     }
        
     },
@@ -247,36 +246,11 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
       })     
     }
   },[shop])
-  useEffect(()=>{
-    let a:any
-    if(alert.status)
-    {
-      a=setTimeout(()=>{
-        setAlert({...alert,status:false})
-      },2000)
-    }
-    return()=>{
-      clearTimeout(a)
-      
-    }
-  },[alert])
+
   
   return (
     <>
-    <Collapse in={alert.status}>
-    <Alert severity={alert.message==='Success!'?'success':'error'} action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setAlert({...alert,status:false});
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }>{alert.message}</Alert>
-    </Collapse>
+    
     <form onSubmit={handleSubmit} className={styles.main}>
       <FormControl style={{ width: "100%" }} className="appear-animated">
         <InputLabel id="demo-simple-select-label">Category</InputLabel>

@@ -41,7 +41,7 @@ const Item = ({ data, onDelete }: props) => {
         <h3>Name:  <em> { name}</em></h3>
         <h3>Brand:  <em> {brand}</em></h3>
         <h3>
-         color:   <em> {color} </em> 
+         color:   <em style={{color:color.toLowerCase()}}> {color} </em> 
         </h3>
         <h3>price:   <em> {getPrice(price)}</em></h3>
         <h3>

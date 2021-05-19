@@ -10,6 +10,7 @@ const Layout:React.FC=({children})=>{
     const styles=useStyles()
 return (
     <div className={styles.main}>
+        
     <Nav/>
     {children}
    

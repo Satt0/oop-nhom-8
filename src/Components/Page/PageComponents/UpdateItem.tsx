@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useMemo} from 'react'
 import {useHistory} from 'react-router-dom'
 // import Products from 'Modals/Modals'
 import Input from 'Components/Page/Input'
@@ -8,31 +8,32 @@ interface props{
     handleShop:Function
 }
 export default function UpdateItem({id,shop,handleShop}:props) {
-    const [item,setItem]=useState(()=>{
-        
-        return {}
-    })
+   
    const history=useHistory()
+   const [valid,setValid]=useState(false)
+   const item=useMemo(()=>{
+      
+    const data=shop.find((e:any)=>e.SKU===id)
+    if(data){
+        return data
+    }
+    else{
+        setValid(true)
+        return {}
+    }
+   },[id,shop])
    useEffect(()=>{
-       let result=false;
-        if(shop?.length){
-            const found=shop.find((e:any)=>e.SKU===id)
-            if(found)
-            {
-                setItem(found)
-                result=true;
-                
-            }
-        }
-        if(result===false){
-                history.push('/')
-        }   
-
-   },[shop,id,history])
+       if(valid){
+           history.push('/')
+       }
+   })
     
-    return (
-        <div>
-            <Input shop={item} loadProps={true} handleShop={handleShop}/>
-        </div>
-    )
+    if(item.name){
+        return (
+            <div>
+                <Input key={'item-update'} shop={item} loadProps={true} handleShop={handleShop}/>
+            </div>
+        )
+    }
+    return <h1>Loading...</h1>
 }
