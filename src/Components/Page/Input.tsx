@@ -14,7 +14,7 @@ import Products from "Modals/Modals";
 import Shirts from 'Modals/Shirt';
 import Pants from 'Modals/Pant'
 import HandBag from 'Modals/HandBag'
-import preload from "Modals/preload";
+
 interface props {
   name: string;
   state: any;
@@ -124,12 +124,39 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         item= new HandBag({...global,sold:sold});
         }
        
-     if(preload){
+     if(loadProps){
           handleShop((state:Array<Products>)=>{
-              const newState=[...state.filter((e:Products)=>e.SKU!==item.SKU),item]
+              const newState=state.map((e:any)=>{
+                    if(e.SKU===shop.SKU){
+                        const { name,
+                        quantity,
+                        category,
+                        price,
+                        color,
+                        SKU,
+                        brand,
+                        sleeve,
+                        hip,
+                        leg,
+                        hasHandle,
+                        material,
+                        size}=global
+                        
+                        e.updateItem({hasHandle,material,hip,leg,sleeve,size,name,SKU,price:(price),quantity:(quantity),color,category,brand,sold:Math.floor(Math.random()*quantity)})
+                          console.log(e.constructor.name);
+                              
+                        return e
+                      }
+                    else{
+                      return e
+                    }
+              })
+              
+              
               return newState
           })
      }else{
+       
       handleShop((state:Array<Products>)=>[...state,item])
      }
      alert("successfully!")
@@ -142,7 +169,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
     }
        
     },
-    [global,handleShop]
+    [global,handleShop,loadProps,shop.SKU]
   );
 
   const subInput = useMemo(() => {
@@ -256,6 +283,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
           required
+          disabled={loadProps}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={global.category}

@@ -27,6 +27,21 @@ class Pant extends Products {
   public get hip():string{
     return this._hip
   }
+  public set hip(value:string){
+    this._hip=value
+  }
+  public set leg(value:string){
+    this._leg=value
+  }
+  public updateItem(data:input){
+    const { name, quantity, price, category, SKU, brand, sold ,hip,leg,color}=data
+    super.updateItem({name,quantity,price,category,SKU,color,brand,sold})
+    this._hip=hip;
+    this._leg=leg;
+    console.log('====================================');
+    console.log(hip,leg,'from pant');
+    console.log('====================================');
+  }
 }
 
 export default Pant;

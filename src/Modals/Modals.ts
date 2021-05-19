@@ -26,6 +26,7 @@ class Products implements item {
   private _brand:string;
   private _sold:number;
   private _color:string;
+  public lastUpdated:number;
   constructor(
     {
       name,
@@ -46,6 +47,7 @@ class Products implements item {
     this._brand=brand
     this._sold=sold
     this._color=color
+    this.lastUpdated=Date.now()-5000000000
   }
   public get name(): string {
     return this._name;
@@ -71,12 +73,54 @@ class Products implements item {
    public get sold():number{
     return this._sold;
    }
+   public set name(name:string){
+      this._name=name
+   }
+   public set quantity(quantity:number){
+    this._quantity=quantity
+ }
+ public set price(price:number){
+  this._price=price
+}
+public set category(value:string){
+  this._category=value
+}
+public set SKU(value:string){
+  this._SKU=value
+}
+public set brand(value:string){
+  this._brand=value
+}
+public set sold(value:number){
+  this._sold=value
+}
+public set color(value:string){
+  this._color=value
+}
    public isStock():boolean{
      if(this._quantity>0)
      {
        return true
      }
      return false
+   }
+   public updateItem(newItem:constructor){
+    const {name,quantity,price,category,SKU,brand,sold,color}=newItem
+   
+    
+    if(this.quantity>quantity){
+      this.lastUpdated=Date.now()
+      console.log('update time');
+      
+    }
+    this.name = name;
+    this.quantity = Math.max(quantity,0);
+    this.price = Math.max(price,0);
+    this.category = category;
+    this.SKU=SKU
+    this.brand=brand
+    this.sold=sold
+    this.color=color
    }
   
 }

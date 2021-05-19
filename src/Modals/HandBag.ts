@@ -21,6 +21,27 @@ class HandBag extends Products {
     this._hasHandle=hasHandle;
     this._material=material;
   }
+  public get hasHandle(){
+    return this._hasHandle;
+  }
+  public get material(){
+    return this._material
+  }
+  public set hasHandle(value:string){
+    this._hasHandle=value
+  }
+  public set material(value:string){
+    this._material=value
+  }
+  public updateItem(data:input){
+    const { name, quantity, price, category, SKU, brand, sold ,hasHandle,material,color}=data
+    super.updateItem({name,quantity,price,category,SKU,color,brand,sold})
+    this._hasHandle=hasHandle;
+    this._material=material;
+    console.log('====================================');
+    console.log(hasHandle,material,'from hb');
+    console.log('====================================');
+  }
 }
 
 export default HandBag;

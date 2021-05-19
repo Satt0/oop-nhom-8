@@ -27,9 +27,21 @@ class Shirt extends Products {
   public get size():string{
     return this._size
   }
-  public showCase():void{
-    console.log(this.name,'from shirt');
-    
+  public set size(value:string){
+    this._size=value;
+  }
+  public set sleeve(value:string){
+    this._sleeve=value
+  }
+  
+  public updateItem(data:input){
+    const { name, quantity, price, category, SKU, brand, sold ,sleeve,size,color}=data
+    super.updateItem({name,quantity,price,category,SKU,color,brand,sold})
+    this.sleeve=sleeve;
+    this.size=size;
+    console.log('====================================');
+    console.log(sleeve,size);
+    console.log('====================================');
   }
 }
 

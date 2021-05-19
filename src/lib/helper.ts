@@ -9,3 +9,16 @@ export function getPrice(str: string) {
   }
   return str + " VND";
 }
+export function compareMonth(date:number){
+const a=new Date(date)
+const b=new Date(Date.now())
+  const compare=a.getMonth()===b.getMonth()
+if(compare){
+  return true
+}
+
+
+
+
+  return false
+}

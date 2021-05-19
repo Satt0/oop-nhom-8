@@ -11,7 +11,9 @@ const App:React.FC=()=> {
   // load preloaded products
   const [state,setState]=useState(()=>{
     const data:Array<Products>=[]
-   
+    console.log('====================================');
+    console.log(preload);
+    console.log('====================================');
     preload.forEach((e:any)=>{
       data.push(e)
     })

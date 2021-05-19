@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { makeStyles, Theme } from "@material-ui/core";
 import Product from "Modals/Modals";
 import ListItem from "Components/ListItem/ListItem";
-
+import {compareMonth} from 'lib/helper'
 const useStyles = makeStyles((theme: Theme) => ({
   main: {
     maxWidth: 1200,
@@ -43,7 +43,7 @@ const Home: React.FC = ({ shop, handleShop }: any) => {
 
         <ListItem
           handleDelete={handleDelete}
-          items={shop.filter((e: Product) => e.isStock())}
+          items={shop.filter((e: Product) => compareMonth(e.lastUpdated))}
           count={shop.length}
         />
       </div>
