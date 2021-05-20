@@ -19,3 +19,6 @@
 #### b. Trang tìm kiếm và cập nhật /src/Components/Page/Update.tsx , /src/Components/Page/PageComponent/*
 #### c. Trang nhập liệu /src/Components/Page/Input.tsx
 #### d. Trang update sản phẩm tái sử dụng trang nhập liệu  và nhập sẵn thông tin sản phẩm.
+### 5. Các đối tượng 
+#### a. Các đối tượng nằm trong folder /src/Modals : Product - Modal.ts, Shirt - Shirt.ts, HandBag-HandBag.ts, Pant-Pant.ts
+#### b. Các sản phẩm được nhập sẵn ở trong file  preaload.ts
