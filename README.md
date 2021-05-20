@@ -14,3 +14,8 @@
 ###  2. Các thư viện sử dụng: _React.js_ [docs](https://reactjs.org/)
 ### 3. Cấu trúc thư mục
 ![alt text](./file-structure.png "file structure")
+### 4. Cấu trúc giao diện
+  ####  a. Trang chủ /src/Components/Page/Home.tsx
+#### b. Trang tìm kiếm và cập nhật /src/Components/Page/Update.tsx , /src/Components/Page/PageComponent/*
+#### c. Trang nhập liệu /src/Components/Page/Input.tsx
+#### d. Trang update sản phẩm tái sử dụng trang nhập liệu  và nhập sẵn thông tin sản phẩm.
