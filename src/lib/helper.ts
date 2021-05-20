@@ -1,3 +1,4 @@
+// Bạch Đăng Dũng 20194253
 export function getPrice(str: string) {
   str = str.toString();
 

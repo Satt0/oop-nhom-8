@@ -1,5 +1,5 @@
 
-
+// Hoàng Duy Hưng 20194295
 interface constructor{
   name: string,
     quantity: number,
@@ -14,6 +14,7 @@ interface constructor{
 interface item {
    
   isStock:Function;
+  updateItem:Function;
   
   
 }
@@ -105,12 +106,13 @@ public set color(value:string){
      return false
    }
    public updateItem(newItem:constructor){
-    const {name,quantity,price,category,SKU,brand,sold,color}=newItem
+    const {name,quantity,price,category,SKU,brand,color}=newItem
    
     
     if(this.quantity>quantity){
       this.lastUpdated=Date.now()
-      console.log('update time');
+      this.sold=this.sold+ this.quantity-quantity
+      
       
     }
     this.name = name;
@@ -119,7 +121,7 @@ public set color(value:string){
     this.category = category;
     this.SKU=SKU
     this.brand=brand
-    this.sold=sold
+   
     this.color=color
    }
   

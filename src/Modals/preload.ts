@@ -1,6 +1,7 @@
+// Hoàng Duy Hưng 20194295
 import Shirt from "./Shirt";
 import Pant from "./Pant";
-// import HandBag from "./HandBag";
+
 import Products from './Modals'
 
 const shirt1: Shirt = new Shirt({

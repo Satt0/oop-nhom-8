@@ -1,3 +1,4 @@
+// Hoàng Minh Tân 20194367
 import  { useState, useCallback, useMemo, useEffect } from "react";
 import {
   TextField,
@@ -71,14 +72,14 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
         if (target === "name") {
           setGlobal((state: state) => ({ ...state, name: value }));
         } else if (target === "quantity") {
-          if (parseInt(value) > 0) {
+          if (parseInt(value) >= 0) {
             setGlobal((state: state) => ({
               ...state,
               quantity: parseInt(value),
             }));
           }
         } else if (target === "price") {
-          if (parseInt(value) > 0) {
+          if (parseInt(value) >= 0) {
             setGlobal((state: state) => ({ ...state, price: parseInt(value) }));
           }
         } else if (target === "category") {
@@ -104,15 +105,18 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
     },
     []
   );
+  // hàm update và add sản phẩm
   const handleSubmit = useCallback(
     (e) => {
      
       e.preventDefault();
       const check=Object.entries(global).every(e=>e[1]!==undefined || e[1]!==null);
       if(check){
+        // tạo item lớp Products
         let item:Products;
-       
+       // random số lượng bán ra
        const sold=Math.ceil(Math.random()*global.quantity)
+       // kiểm tra loại sản phẩm
        if(global.category==='shirt')
        {
          item=new Shirts({...global,sold:sold});
@@ -123,7 +127,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
        else {
         item= new HandBag({...global,sold:sold});
         }
-       
+       // nếu đây là trang update thì update sản phẩm theo SKU
      if(loadProps){
           handleShop((state:Array<Products>)=>{
               const newState=state.map((e:any)=>{
@@ -142,7 +146,7 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
                         material,
                         size}=global
                         
-                        e.updateItem({hasHandle,material,hip,leg,sleeve,size,name,SKU,price:(price),quantity:(quantity),color,category,brand,sold:Math.floor(Math.random()*quantity)})
+                        e.updateItem({hasHandle,material,hip,leg,sleeve,size,name,SKU,price:(price),quantity:(quantity),color,category,brand,sold:shop.sold})
                           console.log(e.constructor.name);
                               
                         return e
@@ -156,20 +160,22 @@ const Input = ({ shop,handleShop ,loadProps}: passedProps) => {
               return newState
           })
      }else{
-       
+       // nếu đây là trang nhập liệu thì thêm sản phẩm vào danh sách
       handleShop((state:Array<Products>)=>[...state,item])
      }
+     // thông báo thành công
      alert("successfully!")
      
     }
     else
     {
+      // thông báo thất bại
       alert('something went wrong, please retry!')
       
     }
        
     },
-    [global,handleShop,loadProps,shop.SKU]
+    [global,handleShop,loadProps,shop.SKU,shop.sold]
   );
 
   const subInput = useMemo(() => {

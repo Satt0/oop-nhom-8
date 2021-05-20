@@ -1,3 +1,4 @@
+// Hoàng Minh Tân 20194367
 import React, { useCallback } from "react";
 import { makeStyles, Theme } from "@material-ui/core";
 import Product from "Modals/Modals";
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 const Home: React.FC = ({ shop, handleShop }: any) => {
   const style = useStyles();
-
+  // hàm xóa sản phẩm
   const handleDelete = useCallback(
     (SKU) => {
       handleShop((state: Array<any>) =>
